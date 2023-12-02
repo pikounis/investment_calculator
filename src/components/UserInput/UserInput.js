@@ -23,12 +23,15 @@ const UserInput = (props) => {
 
   const inputChangeHandler = (input, value) => {
     setUserInput((prevInput) => {
+      // Check if the value is empty and set it to an empty string if it is
+      const newValue = value === '' ? '' : +value;
       return {
         ...prevInput,
-        [input]: +value,
+        [input]: newValue,
       };
     });
   };
+
 
   return (
     <form onSubmit={submitHandler} className={classes.form}>
@@ -40,7 +43,7 @@ const UserInput = (props) => {
               inputChangeHandler('current-savings', event.target.value)
             }
             value={userInput['current-savings']}
-            type="number"
+            type="tel"
             id="current-savings"
           />
         </p>
@@ -51,7 +54,7 @@ const UserInput = (props) => {
               inputChangeHandler('yearly-contribution', event.target.value)
             }
             value={userInput['yearly-contribution']}
-            type="number"
+            type="tel"
             id="yearly-contribution"
           />
         </p>
@@ -77,7 +80,7 @@ const UserInput = (props) => {
               inputChangeHandler('duration', event.target.value)
             }
             value={userInput['duration']}
-            type="number"
+            type="tel"
             id="duration"
           />
         </p>
